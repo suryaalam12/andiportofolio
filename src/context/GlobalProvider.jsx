@@ -1,14 +1,15 @@
 import React, { useContext, createContext, useState } from "react";
 
-// Import video files
-import video1_1 from "../assets/p_1_1.mp4";
-import video1_2 from "../assets/p_1_2.mp4";
-import video1_3 from "../assets/p_1_3.mp4";
-import video1_4 from "../assets/p_1_4.mp4";
-import video2_1 from "../assets/p_2_1.mp4";
-import video2_2 from "../assets/p_2_2.mp4";
-import video2_3 from "../assets/p_2_3.mp4";
-import video1_5 from "../assets/p_1_5.mp4";
+// Import GIF files
+import gif1_1 from "../assets/p_1_1.gif";
+import gif1_2 from "../assets/p_1_2.gif";
+import gif1_3 from "../assets/p_1_3.gif";
+import gif1_4 from "../assets/p_1_4.gif";
+import gif1_5 from "../assets/p_1_5.gif";
+import gif2_1 from "../assets/lv_0_20250911184344.gif";
+import gif2_2 from "../assets/lv_0_20250911184538.gif";
+import gif2_3 from "../assets/lv_0_20250911184657.gif";
+
 
 // Create the context
 const GlobalContext = createContext();
@@ -46,28 +47,28 @@ export const GlobalProvider = ({ children }) => {
                         label: "NJOP Zoning",
                         content:
                             "Developed a spatial analysis module using Turf.js to generate custom buffer zones, identify intersecting feature IDs, and process datasets with PostGIS queries such as ST_Intersection. 💰 This functionality supports zoning analysis for NJOP (Tax Object Selling Value).",
-                        videoPath: video1_1
+                        videoPath: gif1_1
                     },
                     {
                         id: "2",
                         label: "PostGIS & Turf.js with Polygon Data",
                         content:
                             "⚙️ Implemented advanced geospatial operations in PostGIS, including geometry splitting (ST_Split), dataset merging (ST_Union), and intersection analysis (ST_Intersection) for precise spatial data management. 🌐 On the client side, Turf.js was used to transform and analyze GeoJSON data, dynamically retrieve intersecting features, render them on an interactive map, and save updated datasets seamlessly.",
-                        videoPath: video1_2
+                        videoPath: gif1_2
                     },
                     {
                         id: "3",
                         label: "Thematic Mapping",
                         content:
                             "🔗 Built a data integration pipeline to perform left joins across external databases (PostgreSQL and Oracle), enabling customized thematic queries.Enhanced map symbology and integrated charting tools to improve spatial data visualization and interpretation for end-users.",
-                        videoPath: video1_3
+                        videoPath: gif1_3
                     },
                     {
                         id: "4",
                         label: "Additional Features",
                         content:
                             "💡Integrated Google Street View into the platform, allowing users to conduct real-world assessments for tax evaluation and policy planning. Optimized API usage for extended free access — let's just say I found a way to keep Pegman working overtime without sending me an invoice. 😉",
-                        videoPath: video1_4
+                        videoPath: gif1_4
                     }
                 ]
             },
@@ -85,19 +86,19 @@ export const GlobalProvider = ({ children }) => {
                         id: "1",
                         label: "Data Display",
                         content: "Implemented efficient data loading with marker clustering and geospatial indexing to significantly improve performance. ⚡. Integrated with legacy p APIs to overcome CORS restrictions, ensuring smooth data synchronization across mobile and web platforms.",
-                        videoPath: video2_1
+                        videoPath: gif2_1
                     },
                     {
                         id: "2",
                         label: "Spatial Analysis for Location Input",
                         content: "💡Eliminated the need for manual location input by using ST_Intersect with land boundary datasets to automatically detect and assign land parcel names.",
-                        videoPath: video2_2
+                        videoPath: gif2_2
                     },
                     {
                         id: "3",
                         label: "Pegman for Efficient Land Survey",
                         content: "👁️ Integrated Google Street View Pegman to help surveyors quickly assess site conditions and visualize land parcels more effectively.",
-                        videoPath: video2_3
+                        videoPath: gif2_3
                     }
                 ]
             },
@@ -112,7 +113,7 @@ export const GlobalProvider = ({ children }) => {
                     id: "1",
                     label: "Pegman for Efficient Land Survey",
                     content: "I implemented a streamlined spatial pipeline using PostGIS to generate clean and accurate desa (village) and blok (block) boundary geometries. Key technologies and steps include: ST_Union to merge and unify multiple geometries into cohesive shapes PostGIS PostGIS . ST_Buffer for both outward and inward buffering, which helps smooth and refine boundaries; the ability to buffer by positive and negative values is intrinsic to the function PostGIS PostGIS . ST_Dump to split complex multipolygons into individual polygon parts, enabling more granular handling Stack Overflow GIS Stack Exchange . ST_ExteriorRing combined with ST_MakePolygon to strip away interior holes and preserve only the outer boundary rings—a method commonly used for simplifying polygon shapes Open Geospatial Technologies Stack Overflow . ST_Collect to recombine cleaned polygons into a single geometry, ensuring a cohesive final shape Stack Overflow Open Geospatial Technologies . ST_Transform to reproject geometries between coordinate systems (e.g., from UTM for metric operations and back to WGS84 for mapping applications)",
-                    videoPath: video1_5
+                    videoPath: gif1_5
                 }]
             },
         ],

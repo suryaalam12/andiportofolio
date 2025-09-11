@@ -35,18 +35,17 @@ const Projects = () => {
                         </div>
                         <div className="achievement-media">
                           {achievement.videoPath ? (
-                            <video
-                              controls
+                            <img
+                              src={achievement.videoPath}
+                              alt={achievement.label}
                               width="100%"
                               style={{
                                 ...(typeof achievement.videoPath === 'string' && achievement.videoPath.includes('p_1') 
                                   ? { maxHeight: "600px", objectFit: "cover" } 
                                   : { maxHeight: "500px", maxWidth: "280px", margin: "0 auto", display: "block" })
                               }}
-                              className="achievement-video"
-                            >
-                              <source src={achievement.videoPath} type="video/mp4" />
-                            </video>
+                              className="achievement-gif"
+                            />
                           ) : (
                             <div className="media-placeholder">
                               <p>Media for {achievement.label}</p>

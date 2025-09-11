@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://suryaalam12.github.io/portofolio",
+  "homepage": "https://suryaalam12.github.io/andiportofolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
