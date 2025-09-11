@@ -6,9 +6,9 @@ import gif1_2 from "../assets/p_1_2.gif";
 import gif1_3 from "../assets/p_1_3.gif";
 import gif1_4 from "../assets/p_1_4.gif";
 import gif1_5 from "../assets/p_1_5.gif";
-import gif2_1 from "../assets/lv_0_20250911184344.gif";
-import gif2_2 from "../assets/lv_0_20250911184538.gif";
-import gif2_3 from "../assets/lv_0_20250911184657.gif";
+import gif2_3 from "../assets/lv_0_20250911184344.gif";
+import gif2_1 from "../assets/lv_0_20250911184538.gif";
+import gif2_2 from "../assets/lv_0_20250911184657.gif";
 
 
 // Create the context
@@ -111,7 +111,7 @@ export const GlobalProvider = ({ children }) => {
                 featured: true,
                 menu: [{
                     id: "1",
-                    label: "Pegman for Efficient Land Survey",
+                    label: "Spatial Adjustment of Land and Building Tax Shapefile Data",
                     content: "I implemented a streamlined spatial pipeline using PostGIS to generate clean and accurate desa (village) and blok (block) boundary geometries. Key technologies and steps include: ST_Union to merge and unify multiple geometries into cohesive shapes PostGIS PostGIS . ST_Buffer for both outward and inward buffering, which helps smooth and refine boundaries; the ability to buffer by positive and negative values is intrinsic to the function PostGIS PostGIS . ST_Dump to split complex multipolygons into individual polygon parts, enabling more granular handling Stack Overflow GIS Stack Exchange . ST_ExteriorRing combined with ST_MakePolygon to strip away interior holes and preserve only the outer boundary rings—a method commonly used for simplifying polygon shapes Open Geospatial Technologies Stack Overflow . ST_Collect to recombine cleaned polygons into a single geometry, ensuring a cohesive final shape Stack Overflow Open Geospatial Technologies . ST_Transform to reproject geometries between coordinate systems (e.g., from UTM for metric operations and back to WGS84 for mapping applications)",
                     videoPath: gif1_5
                 }]
