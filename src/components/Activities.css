@@ -1,0 +1,324 @@
+/* Activities Section */
+.activities-section {
+    min-height: 100vh;
+    background: transparent;
+    padding: var(--space-3xl) var(--space-lg);
+}
+
+.activities-subtitle {
+    text-align: center;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255, 222, 89, 0.8);
+    margin-bottom: var(--space-2xl);
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Instagram-Style Grid */
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+}
+
+/* Activity Card */
+.activity-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(0, 74, 173, 0.2);
+    border: 2px solid rgba(255, 222, 89, 0.2);
+}
+
+.activity-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: var(--primary-yellow);
+}
+
+/* Image Wrapper */
+.activity-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    /* 1:1 Aspect Ratio */
+    overflow: hidden;
+    background: #001931;
+}
+
+.activity-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.activity-card:hover .activity-image {
+    transform: scale(1.1);
+}
+
+/* Overlay on Hover */
+.activity-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top,
+            rgba(0, 74, 173, 0.95) 0%,
+            rgba(0, 74, 173, 0.7) 50%,
+            transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-md);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.activity-card:hover .activity-overlay {
+    opacity: 1;
+}
+
+.activity-info {
+    width: 100%;
+}
+
+.activity-caption {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: var(--space-xs);
+    line-height: 1.5;
+}
+
+.activity-date {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--primary-yellow);
+    opacity: 0.9;
+}
+
+/* Tags Below Image */
+.activity-tags {
+    padding: var(--space-sm);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.activity-tag {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--primary-yellow);
+    background: rgba(255, 222, 89, 0.15);
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 222, 89, 0.3);
+    transition: all 0.2s ease;
+}
+
+.activity-tag:hover {
+    background: rgba(255, 222, 89, 0.25);
+    border-color: var(--primary-yellow);
+}
+
+/* Lightbox Modal */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: var(--space-lg);
+    animation: fadeIn 0.3s ease;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 1200px;
+    width: 100%;
+    background: rgba(0, 74, 173, 0.3);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--primary-yellow);
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg);
+    animation: scaleIn 0.3s ease;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    background: var(--primary-yellow);
+    color: var(--primary-blue);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.lightbox-close:hover {
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 222, 89, 0.5);
+}
+
+.lightbox-image-wrapper {
+    width: 100%;
+    max-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+    background: #000;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.lightbox-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-height: 70vh;
+}
+
+.lightbox-details {
+    text-align: center;
+}
+
+.lightbox-caption {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.125rem;
+    color: #fff;
+    margin-bottom: var(--space-sm);
+    line-height: 1.6;
+}
+
+.lightbox-date {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1rem;
+    color: var(--primary-yellow);
+    margin-bottom: var(--space-md);
+}
+
+.lightbox-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.lightbox-tag {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--primary-yellow);
+    background: rgba(255, 222, 89, 0.15);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 222, 89, 0.3);
+}
+
+/* Instagram Button */
+.instagram-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: var(--space-lg);
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.75rem;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 8px 20px rgba(131, 58, 180, 0.4);
+}
+
+.instagram-button:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(131, 58, 180, 0.6);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.instagram-button:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.instagram-button i {
+    font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .activities-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: var(--space-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .activities-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: var(--space-sm);
+    }
+
+    .lightbox-content {
+        padding: var(--space-md);
+    }
+
+    .lightbox-image-wrapper {
+        max-height: 60vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .activities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lightbox-overlay {
+        padding: var(--space-sm);
+    }
+}

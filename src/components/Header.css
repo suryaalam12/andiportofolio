@@ -1,0 +1,172 @@
+.header {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: transparent;
+    /* Allow body gradient to show */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Falling Meteor Background Animation */
+.meteor-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.meteor-background>div {
+    width: 100%;
+    height: 100%;
+}
+
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.header-content {
+    max-width: 1400px;
+    width: 100%;
+}
+
+.name-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.hi-animation {
+    position: absolute;
+    top: -540px;
+    left: -320px;
+    width: 800px;
+    height: 900px;
+    z-index: 10;
+}
+
+.profile-name {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    color: var(--primary-yellow);
+    margin-bottom: 0;
+    letter-spacing: -1px;
+    text-shadow: 4px 4px 0px #000;
+    /* Retro shadow */
+}
+
+.profile-title {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 400;
+    color: #ffde59cc;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase;
+}
+
+.profile-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    color: rgba(255, 222, 89, 0.7);
+    margin-bottom: 3rem;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.profile-location i {
+    font-size: 1rem;
+    color: var(--primary-yellow);
+}
+
+/* Navigation Menu */
+.header-nav {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.85rem;
+    color: var(--primary-yellow);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.nav-link:hover {
+    border-color: var(--primary-yellow);
+    background: rgba(255, 222, 89, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 222, 89, 0.2);
+}
+
+.nav-link:active {
+    transform: translateY(0);
+}
+
+
+.header-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Buttons inherit .btn from index.css, just adding specific colors/borders */
+.btn-primary {
+    background: var(--primary-yellow);
+    color: #004aad;
+    border-color: var(--primary-yellow);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--primary-yellow);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-yellow);
+    border-color: var(--primary-yellow);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-yellow);
+    color: #004aad;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 2rem 1rem;
+    }
+
+    .header-cta {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

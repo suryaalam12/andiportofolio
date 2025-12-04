@@ -1,0 +1,410 @@
+/* Project Section Snap Scrolling - Handled globally now */
+
+/* Projects Section - Container for Solar System Background */
+.projects-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ensure content sits above the fixed solar system */
+.projects-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Force vertical stacking for all project cards */
+.webmap-card,
+.mobile-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 4rem;
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
+}
+
+/* Project Content - No background boundaries */
+.project-content {
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(0, 25, 49, 0.3);
+    /* Semi-transparent dark blue */
+    backdrop-filter: blur(8px);
+    border-bottom: 4px solid var(--primary-yellow);
+    position: relative;
+    z-index: 2;
+    border-radius: 16px;
+    /* Soften edges */
+}
+
+.project-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.tech-badge {
+    background: rgba(255, 222, 89, 0.15);
+    color: var(--primary-yellow);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 2px solid rgba(255, 222, 89, 0.3);
+    transition: all 0.3s ease;
+}
+
+.tech-badge:hover {
+    background: rgba(255, 222, 89, 0.25);
+    border-color: var(--primary-yellow);
+    transform: translateY(-3px);
+}
+
+/* Project Images - now proportional and stacked */
+/* Project Images - now proportional and stacked */
+.project-images {
+    width: 100%;
+    padding: 2rem;
+    background: transparent;
+    /* Removed black background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    /* NO overflow:hidden - this prevents carousel scrolling */
+}
+
+/* Netflix-Style Carousel */
+.netflix-carousel {
+    display: flex;
+    overflow-x: hidden;
+    /* Disabled scrolling - users must use arrows/keyboard */
+    gap: 2rem;
+    width: 100%;
+    padding: 4rem 2rem 2rem 2rem;
+    /* Extra padding for scale effect */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Hide scrollbar for cleaner look */
+    scroll-behavior: smooth;
+    /* Fast scrolling - no animation delay */
+}
+
+.netflix-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: 70%;
+    /* Smaller base width */
+    height: 50vh;
+    /* Smaller base height */
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0.85);
+    /* Non-active items are smaller */
+    opacity: 0.6;
+    /* Non-active items are dimmed */
+}
+
+/* Active/Center item - larger and fully visible */
+.carousel-item.active {
+    transform: scale(1.1);
+    opacity: 1;
+    z-index: 2;
+}
+
+.project-image-carousel {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Or contain, depending on preference. Cover looks more 'Netflix' */
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Make images proportional (never stretched) */
+.project-image-landscape {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: contain;
+    transition: all 0.5s ease;
+}
+
+/* Remove grid entirely */
+.images-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+/* Hover Effect Kept */
+.image-wrapper,
+.single-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    /* Sharp corners for retro look */
+    background: #001931;
+    /* Dark blue */
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 4px solid #fff;
+    /* Retro border */
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5);
+}
+
+.image-wrapper:hover,
+.single-image-wrapper:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px var(--primary-yellow);
+}
+
+/* Responsive remains simple */
+@media (max-width: 768px) {
+    .project-content {
+        padding: 1.5rem;
+    }
+
+    .project-images {
+        padding: 1rem;
+    }
+
+    .carousel-item {
+        width: 90%;
+        height: 40vh;
+        /* Smaller on mobile */
+    }
+}
+
+/* Mobile Phone Frame - Horizontal Carousel */
+.mobile-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    width: 100%;
+}
+
+.mobile-carousel {
+    display: flex;
+    overflow-x: hidden;
+    /* Disabled scrolling - users must use arrows/keyboard */
+    gap: 200rem;
+    /* Increased gap for laptop screens */
+    width: 100%;
+    max-width: 200%;
+    padding: 4rem 50% 2rem 50%;
+    /* Large horizontal padding forces overflow */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Padding creates centering effect when items are scrolled into view */
+    scroll-behavior: smooth;
+    /* Fast scrolling - no animation delay */
+}
+
+.mobile-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-carousel-item {
+    flex: 0 0 auto;
+    /* Don't shrink, don't grow */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(0.85);
+    opacity: 0.6;
+    min-width: fit-content;
+    /* Ensure item takes its natural width */
+}
+
+.mobile-carousel-item.active {
+    transform: scale(1.06);
+    /* Restored user value */
+    opacity: 1;
+    z-index: 2;
+}
+
+.phone-frame {
+    position: relative;
+    width: 350px;
+    /* Default mobile width */
+    height: 850px;
+    /* Restored user value */
+    background: #001931;
+    /* Blue theme */
+    border-radius: 40px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 4px solid #333;
+    /* Keep dark border for phone realism */
+}
+
+.phone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 20px;
+    background: #1c1c1e;
+    border-radius: 0 0 20px 20px;
+    z-index: 10;
+}
+
+.phone-screen-static {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 32px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive mobile carousel - Larger screens */
+@media (min-width: 1024px) {
+    .phone-frame {
+        width: 400px;
+        height: 850px;
+        /* Restored user value */
+    }
+
+    .mobile-carousel {
+        padding: 4rem 50% 2rem 50%;
+        /* Maintain large padding for scrollability */
+        gap: 4rem;
+    }
+}
+
+/* Responsive mobile carousel - Medium screens */
+@media (max-width: 1023px) and (min-width: 769px) {
+    .phone-frame {
+        width: 320px;
+        height: 640px;
+    }
+}
+
+/* Responsive mobile carousel - Tablets */
+@media (max-width: 768px) {
+    .phone-frame {
+        width: 280px;
+        height: 560px;
+    }
+
+    .mobile-carousel {
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+}
+
+/* Responsive mobile carousel - Small phones */
+@media (max-width: 480px) {
+    .phone-frame {
+        width: 220px;
+        height: 440px;
+    }
+
+    .phone-notch {
+        width: 100px;
+        height: 16px;
+    }
+
+    .mobile-carousel {
+        gap: 1rem;
+    }
+}
+
+/* Description Container for Dynamic Text */
+.description-container {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.dynamic-description {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll Indicator Text */
+.scroll-indicator-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #ffde59;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* Carousel Dot Indicators */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding: 1rem 0;
+}
+
+.carousel-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 222, 89, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.carousel-dots .dot:hover {
+    background: rgba(255, 222, 89, 0.6);
+    transform: scale(1.2);
+}
+
+.carousel-dots .dot.active {
+    background: #ffde59;
+    width: 12px;
+    height: 12px;
+    box-shadow: 0 0 10px rgba(255, 222, 89, 0.5);
+}
+
+/* Mobile Project Dots - Now clickable */
+.carousel-dots.mobile-dots {
+    margin-top: 1.5rem;
+}
+
+.carousel-dots.mobile-dots .dot {
+    cursor: pointer;
+    pointer-events: auto;
+}

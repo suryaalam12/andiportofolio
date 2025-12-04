@@ -1,14 +1,6 @@
 import React, { useContext, createContext, useState } from "react";
+import mobileProjectOne from "../assets/mobile_project_one.jpg";
 
-// Import GIF files
-import gif1_1 from "../assets/p_1_1.gif";
-import gif1_2 from "../assets/p_1_2.gif";
-import gif1_3 from "../assets/p_1_3.gif";
-import gif1_4 from "../assets/p_1_4.gif";
-import gif1_5 from "../assets/p_1_5.gif";
-import gif2_3 from "../assets/lv_0_20250911184344.gif";
-import gif2_1 from "../assets/lv_0_20250911184538.gif";
-import gif2_2 from "../assets/lv_0_20250911184657.gif";
 
 
 // Create the context
@@ -21,10 +13,10 @@ export const GlobalProvider = ({ children }) => {
             name: "Andi Surya Alam",
             title: "GIS Developer | Tenaga Ahli Sistem Informasi Geografis – Bapenda Jombang",
             location: "Kediri, East Java, ID",
-            summary: "Passionate full-stack developer with 3+ years of experience building innovative GIS applications for web and mobile platforms. Specialized in modern JavaScript frameworks, PHP frameworks, PostGIS, PostgreSQL, and Spatial Data Processing GIS with App ✨ I enjoy transforming complex problems into simple, elegant, and user-friendly solutions.",
+            summary: "I'm a GIS Developer who transforms complex spatial data into intuitive, high-performance applications. With over 3 years of experience at Bapenda Jombang, I specialize in building full-stack solutions that help governments make data-driven decisions—from tax management systems to mobile survey apps. I enjoy turning messy spatial datasets into clean, actionable insights using PostGIS, React, and modern web technologies.",
             skills: ["React", "Node.js", "Ionic JS", "React Native", "Laravel", "PostGIS", "PostgreSQL", "Git", "ArcGis", "QGIS"],
             avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-            contactLinks: {
+            contact: {
                 email: "andalam2@gmail.com",
                 whatsapp: "+6281234567890",
                 github: "https://github.com/suryaalam12",
@@ -34,93 +26,127 @@ export const GlobalProvider = ({ children }) => {
         projects: [
             {
                 id: 1,
-                title: "Web GIS Application for Managing Spatial Data of PBB-P2 and Other Taxes",
+                title: "SISMIOP PBB-P2 & BPHTB",
+                category: "webmap",
                 description:
-                    "🗺️ A web-based GIS platform for managing spatial data related to PBB-P2 and other tax records using PostGIS and PostgreSQL. 🏗️ The system is developed with React and Laravel, integrating two relational databases: Oracle (for property data) and PostgreSQL with PostGIS (for spatial data processing). ⚡ On the client side, Turf.js handles real-time geospatial analysis, while Google Street View provides a verification layer for improved data accuracy.",
-                image:
-                    "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-                technologies: ["React", "Laravel", "PostGIS", "PostgreSQL", "Oracle", "JWT"],
-                featured: true,
-                menu: [
-                    {
-                        id: "1",
-                        label: "NJOP Zoning",
-                        content:
-                            "Developed a spatial analysis module using Turf.js to generate custom buffer zones, identify intersecting feature IDs, and process datasets with PostGIS queries such as ST_Intersection. 💰 This functionality supports zoning analysis for NJOP (Tax Object Selling Value).",
-                        videoPath: gif1_1
-                    },
-                    {
-                        id: "2",
-                        label: "PostGIS & Turf.js with Polygon Data",
-                        content:
-                            "⚙️ Implemented advanced geospatial operations in PostGIS, including geometry splitting (ST_Split), dataset merging (ST_Union), and intersection analysis (ST_Intersection) for precise spatial data management. 🌐 On the client side, Turf.js was used to transform and analyze GeoJSON data, dynamically retrieve intersecting features, render them on an interactive map, and save updated datasets seamlessly.",
-                        videoPath: gif1_2
-                    },
-                    {
-                        id: "3",
-                        label: "Thematic Mapping",
-                        content:
-                            "🔗 Built a data integration pipeline to perform left joins across external databases (PostgreSQL and Oracle), enabling customized thematic queries.Enhanced map symbology and integrated charting tools to improve spatial data visualization and interpretation for end-users.",
-                        videoPath: gif1_3
-                    },
-                    {
-                        id: "4",
-                        label: "Additional Features",
-                        content:
-                            "💡Integrated Google Street View into the platform, allowing users to conduct real-world assessments for tax evaluation and policy planning. Optimized API usage for extended free access — let's just say I found a way to keep Pegman working overtime without sending me an invoice. 😉",
-                        videoPath: gif1_4
-                    }
+                    "A comprehensive web-based GIS platform for managing spatial data related to tax records. It integrates PostGIS for spatial processing and provides real-time geospatial analysis tools.",
+                technologies: ["React", "Laravel", "PostGIS", "Turf.js"],
+                images: [
+                    "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=800&q=80",
+                    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+                    "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
+                    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
+                ],
+                imageDescriptions: [
+                    "Interactive map dashboard displaying tax parcels with real-time spatial analysis and filtering capabilities.",
+                    "Advanced property search interface with PostGIS-powered spatial queries and data visualization.",
+                    "Tax record management system showing detailed parcel information and historical data.",
+                    "Geospatial analytics dashboard with Turf.js integration for complex spatial operations."
                 ]
             },
             {
                 id: 2,
-                title: "Mobile Survey App for Other Taxes (Advertising, Hotel, Restaurant, etc.)",
+                title: "Sipedas Mobile",
+                category: "mobile",
                 description:
-                    "📱 A mobile application built with Ionic JS and Node.js, designed to modernize legacy systems that stored geometry as varchar values, making spatial analysis difficult. 🔧 The new backend architecture leverages PostGIS, enabling advanced spatial operations such as intersections and buffers to help users and policymakers make better decisions.",
-                image:
-                    "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-                technologies: ["Ionic JS", "Node.js", "PostGIS", "PostgreSQL", "JWT"],
-                featured: true,
-                menu: [
-                    {
-                        id: "1",
-                        label: "Data Display",
-                        content: "Implemented efficient data loading with marker clustering and geospatial indexing to significantly improve performance. ⚡. Integrated with legacy p APIs to overcome CORS restrictions, ensuring smooth data synchronization across mobile and web platforms.",
-                        videoPath: gif2_1
-                    },
-                    {
-                        id: "2",
-                        label: "Spatial Analysis for Location Input",
-                        content: "💡Eliminated the need for manual location input by using ST_Intersect with land boundary datasets to automatically detect and assign land parcel names.",
-                        videoPath: gif2_2
-                    },
-                    {
-                        id: "3",
-                        label: "Pegman for Efficient Land Survey",
-                        content: "👁️ Integrated Google Street View Pegman to help surveyors quickly assess site conditions and visualize land parcels more effectively.",
-                        videoPath: gif2_3
-                    }
+                    "Mobile application for field surveyors to collect and update spatial data offline. Features GPS tracking and photo documentation.",
+                technologies: ["React Native", "SQLite", "Node.js"],
+                images: [
+                    "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=800&q=80",
+                    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+                    "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
+                    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
+                ],
+                imageDescriptions: [
+                    "Dashboard view showing real-time surveyor locations and active tasks.",
+                    "Data collection form with offline capabilities and photo attachment.",
+                    "Map interface for assigning tasks to specific geographic areas.",
+                    "Profile settings and synchronization status with the central server."
                 ]
             },
             {
                 id: 3,
-                title: "Spatial Adjustment of Land and Building Tax Shapefile Data",
+                title: "Gretel Tracking",
+                category: "mobile",
                 description:
-                    "",
-                technologies: ["ArcGIS", "PostGIS", "PostgreSQL"],
-                featured: true,
-                menu: [{
-                    id: "1",
-                    label: "Spatial Adjustment of Land and Building Tax Shapefile Data",
-                    content: "I implemented a streamlined spatial pipeline using PostGIS to generate clean and accurate desa (village) and blok (block) boundary geometries. Key technologies and steps include: ST_Union to merge and unify multiple geometries into cohesive shapes PostGIS PostGIS . ST_Buffer for both outward and inward buffering, which helps smooth and refine boundaries; the ability to buffer by positive and negative values is intrinsic to the function PostGIS PostGIS . ST_Dump to split complex multipolygons into individual polygon parts, enabling more granular handling Stack Overflow GIS Stack Exchange . ST_ExteriorRing combined with ST_MakePolygon to strip away interior holes and preserve only the outer boundary rings—a method commonly used for simplifying polygon shapes Open Geospatial Technologies Stack Overflow . ST_Collect to recombine cleaned polygons into a single geometry, ensuring a cohesive final shape Stack Overflow Open Geospatial Technologies . ST_Transform to reproject geometries between coordinate systems (e.g., from UTM for metric operations and back to WGS84 for mapping applications)",
-                    videoPath: gif1_5
-                }]
+                    "Real-time location tracking app for monitoring field personnel and assets with geofencing capabilities.",
+                technologies: ["Flutter", "Firebase", "Google Maps"],
+                images: [
+                    "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=800&q=80",
+                    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+                    "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
+                    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
+                ],
+                imageDescriptions: [
+                    "Live tracking view of field personnel on Google Maps.",
+                    "Geofence management interface for setting up restricted zones.",
+                    "Asset history playback showing historical movement paths.",
+                    "Alert configuration for speed limits and zone breaches."
+                ]
             },
         ],
+        activities: [
+            {
+                id: 1,
+                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
+                caption: "Conducting field survey for tax parcel verification in Jombang district",
+                date: "November 28, 2024",
+                tags: ["fieldwork", "survey", "gis"],
+                instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_1/"
+            },
+            {
+                id: 2,
+                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+                caption: "Team meeting discussing SISMIOP system improvements and new features",
+                date: "November 25, 2024",
+                tags: ["teamwork", "planning", "development"],
+                instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_2/"
+            },
+            {
+                id: 3,
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+                caption: "Analyzing spatial data patterns for property tax optimization",
+                date: "November 20, 2024",
+                tags: ["analytics", "postgis", "data"],
+                instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_3/"
+            },
+            {
+                id: 4,
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+                caption: "Presenting quarterly GIS development progress to stakeholders",
+                date: "November 15, 2024",
+                tags: ["presentation", "reporting"],
+                instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_4/"
+            },
+            {
+                id: 5,
+                image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
+                caption: "Training session on mobile survey app for field officers",
+                date: "November 10, 2024",
+                tags: ["training", "mobile", "education"],
+                instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_5/"
+            },
+            {
+                id: 6,
+                image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80",
+                caption: "Code review session with development team for new features",
+                date: "November 5, 2024",
+                tags: ["coding", "review", "collaboration"],
+                instagramUrl: "https://www.instagram.com/p/YOUR_POST_ID_6/"
+            }
+        ]
     });
 
+    // Helper to expose state directly for simpler consumption if needed, 
+    // though usually we destructure state in the consumer.
+    const value = {
+        ...state,
+        state,
+        setState
+    };
+
     return (
-        <GlobalContext.Provider value={{ state, setState }}>
+        <GlobalContext.Provider value={value}>
             {children}
         </GlobalContext.Provider>
     );

@@ -1,0 +1,90 @@
+.solar-system-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Removed overflow: hidden to prevent cutting off large orbits */
+    pointer-events: none;
+    z-index: 0;
+    /* Removed flex centering to allow absolute positioning from top-left */
+}
+
+/* Stars Background */
+.stars-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+/* Central Sun - Fully visible near Top-Left */
+.sun {
+    position: absolute;
+    top: 80px;
+    /* Positioned inwards to be fully visible */
+    left: 80px;
+    transform: translate(-50%, -50%);
+    /* Center the sun on the coordinate */
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ffde59, #ffa500);
+    z-index: 10;
+}
+
+/* Orbit Tracks - Centered on the Sun */
+.orbit-track {
+    position: absolute;
+    top: 80px;
+    /* Match the sun's position */
+    left: 80px;
+    transform: translate(-50%, -50%);
+    /* Centers the orbit on the sun */
+    border: 1px solid rgba(255, 222, 89, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Planet Container (Rotates) */
+.planet-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Individual Planet */
+.planet {
+    position: absolute;
+    border-radius: 50%;
+    transform: translateX(-50%);
+}
+
+/* Responsive Scaling */
+@media (max-width: 1024px) {
+    .solar-system-container {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 768px) {
+    .solar-system-container {
+        transform: scale(0.6);
+    }
+}
+
+@media (max-width: 480px) {
+    .solar-system-container {
+        transform: scale(0.45);
+    }
+}

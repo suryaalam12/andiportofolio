@@ -1,0 +1,57 @@
+/* Scroll Indicator Container */
+.scroll-indicator {
+    position: fixed;
+    right: 20px;
+    top: 0;
+    height: 100vh;
+    width: 120px;
+    z-index: 9999;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Scroll Track */
+.scroll-track {
+    position: relative;
+    width: 6px;
+    height: calc(100vh - 140px);
+    background: hsla(48, 100%, 50%, 0);
+    border-radius: 3px;
+    margin: 70px 0;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0);
+}
+
+/* Rocket Animation */
+.scroll-rocket {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.4s ease;
+    filter: drop-shadow(0 0 15px rgba(255, 204, 0, 0));
+    will-change: top, transform;
+}
+
+/* Rocket pointing down (scrolling down - default) */
+.scroll-rocket.rocket-down {
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+/* Rocket pointing up (scrolling up - upside down) */
+.scroll-rocket.rocket-up {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* Hide when at very top or bottom */
+.scroll-indicator.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
