@@ -194,25 +194,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
     width: 100%;
+    min-height: 750px;
 }
 
 .mobile-carousel {
     display: flex;
-    overflow-x: hidden;
-    /* Disabled scrolling - users must use arrows/keyboard */
-    gap: 200rem;
-    /* Increased gap for laptop screens */
+    overflow-x: auto;
+    gap: 3rem;
     width: 100%;
-    max-width: 200%;
-    padding: 4rem 50% 2rem 50%;
-    /* Large horizontal padding forces overflow */
+    padding: 2rem calc(50% - 150px);
+    /* Center first/last items properly */
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    /* Padding creates centering effect when items are scrolled into view */
     scroll-behavior: smooth;
-    /* Fast scrolling - no animation delay */
+    scroll-snap-type: x mandatory;
 }
 
 .mobile-carousel::-webkit-scrollbar {
@@ -222,33 +219,28 @@
 .mobile-carousel-item {
     flex: 0 0 auto;
     /* Don't shrink, don't grow */
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: scale(0.85);
-    opacity: 0.6;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: scale(0.8);
+    opacity: 0.5;
     min-width: fit-content;
-    /* Ensure item takes its natural width */
+    scroll-snap-align: center;
 }
 
 .mobile-carousel-item.active {
-    transform: scale(1.06);
-    /* Restored user value */
+    transform: scale(1.1);
     opacity: 1;
     z-index: 2;
 }
 
 .phone-frame {
     position: relative;
-    width: 350px;
-    /* Default mobile width */
-    height: 850px;
-    /* Restored user value */
-    background: #001931;
-    /* Blue theme */
+    width: 300px;
+    height: 600px;
+    background: #1a1a1a;
     border-radius: 40px;
     padding: 12px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    border: 4px solid #333;
-    /* Keep dark border for phone realism */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border: 3px solid #333;
 }
 
 .phone-notch {
@@ -282,45 +274,63 @@
 
 /* Responsive mobile carousel - Larger screens */
 @media (min-width: 1024px) {
+    .mobile-layout {
+        min-height: 850px;
+    }
+
     .phone-frame {
-        width: 400px;
-        height: 850px;
-        /* Restored user value */
+        width: 340px;
+        height: 680px;
     }
 
     .mobile-carousel {
-        padding: 4rem 50% 2rem 50%;
-        /* Maintain large padding for scrollability */
-        gap: 4rem;
+        padding: 2rem calc(50% - 170px);
+        gap: 3rem;
     }
 }
 
 /* Responsive mobile carousel - Medium screens */
 @media (max-width: 1023px) and (min-width: 769px) {
+    .mobile-layout {
+        min-height: 850px;
+    }
+
     .phone-frame {
-        width: 320px;
-        height: 640px;
+        width: 340px;
+        height: 680px;
+    }
+
+    .mobile-carousel {
+        padding: 2rem calc(50% - 170px);
     }
 }
 
 /* Responsive mobile carousel - Tablets */
 @media (max-width: 768px) {
+    .mobile-layout {
+        min-height: 750px;
+    }
+
     .phone-frame {
-        width: 280px;
-        height: 560px;
+        width: 300px;
+        height: 600px;
     }
 
     .mobile-carousel {
-        padding: 2rem 1rem;
-        gap: 1.5rem;
+        padding: 2rem calc(50% - 150px);
+        gap: 2rem;
     }
 }
 
 /* Responsive mobile carousel - Small phones */
 @media (max-width: 480px) {
+    .mobile-layout {
+        min-height: 650px;
+    }
+
     .phone-frame {
-        width: 220px;
-        height: 440px;
+        width: 260px;
+        height: 520px;
     }
 
     .phone-notch {
@@ -329,7 +339,12 @@
     }
 
     .mobile-carousel {
-        gap: 1rem;
+        padding: 2rem calc(50% - 130px);
+        gap: 1.5rem;
+    }
+
+    .mobile-carousel-item.active {
+        transform: scale(1.1);
     }
 }
 
@@ -407,4 +422,194 @@
 .carousel-dots.mobile-dots .dot {
     cursor: pointer;
     pointer-events: auto;
+}
+
+/* Webmap Layout - Browser-style Carousel */
+.webmap-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    width: 100%;
+}
+
+.webmap-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    width: 100%;
+    padding: 2rem calc(50% - 175px);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.webmap-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.webmap-carousel-item {
+    flex: 0 0 auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: scale(0.85);
+    opacity: 0.5;
+    min-width: fit-content;
+    cursor: pointer;
+    scroll-snap-align: center;
+}
+
+.webmap-carousel-item.active {
+    transform: scale(1);
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Browser Frame for Webmap */
+.webmap-carousel-item .browser-frame {
+    width: 350px;
+    max-width: 70vw;
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    border: 2px solid #333;
+}
+
+.browser-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background: #2d2d2d;
+    gap: 12px;
+}
+
+.browser-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.browser-dots .dot-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.browser-dots .dot-btn.red {
+    background: #ff5f57;
+}
+
+.browser-dots .dot-btn.yellow {
+    background: #febc2e;
+}
+
+.browser-dots .dot-btn.green {
+    background: #28c840;
+}
+
+.browser-url-bar {
+    flex: 1;
+    background: #1a1a1a;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+.browser-url-bar .url-text {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.browser-screen {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #000;
+}
+
+.webmap-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Webmap Dots */
+.carousel-dots.webmap-dots {
+    margin-top: 1.5rem;
+}
+
+/* Responsive webmap carousel */
+@media (min-width: 1024px) {
+    .webmap-carousel {
+        padding: 2rem calc(50% - 200px);
+    }
+
+    .webmap-carousel-item .browser-frame {
+        width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .webmap-carousel {
+        padding: 2rem calc(50% - 160px);
+        gap: 1.5rem;
+    }
+
+    .webmap-carousel-item .browser-frame {
+        width: 320px;
+        max-width: 75vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .webmap-carousel {
+        padding: 2rem calc(50% - 120px);
+        gap: 1rem;
+    }
+
+    .webmap-carousel-item .browser-frame {
+        width: 240px;
+        max-width: 80vw;
+    }
+
+    .browser-header {
+        padding: 6px 10px;
+    }
+
+    .browser-dots .dot-btn {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* Project Actions - Demo Button */
+.project-actions {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.demo-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--primary-yellow, #ffde59) 0%, #ffc107 100%);
+    color: #001931;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 222, 89, 0.3);
+}
+
+.demo-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 222, 89, 0.5);
+}
+
+.demo-button:active {
+    transform: translateY(-1px);
 }

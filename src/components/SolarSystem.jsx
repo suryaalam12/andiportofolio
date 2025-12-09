@@ -1,10 +1,26 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import './SolarSystem.css';
 
-const SolarSystem = () => {
+const SolarSystem = ({ isReady = true }) => {
     const containerRef = useRef(null);
+    const [animationReady, setAnimationReady] = useState(false);
     const { scrollYProgress } = useScroll();
+
+    // Wait for isReady to become true, then trigger animation AFTER header is done
+    useEffect(() => {
+        if (isReady) {
+            // Delay until header animation finishes
+            // Header starts at 0.3s delay and runs for 2s = finishes at ~2.3s
+            // Solar system should start after that
+            const timer = setTimeout(() => {
+                setAnimationReady(true);
+            }, 2500);
+            return () => clearTimeout(timer);
+        } else {
+            setAnimationReady(false);
+        }
+    }, [isReady]);
 
     // Add physics-based smoothing to the scroll progress
     const smoothScroll = useSpring(scrollYProgress, {
@@ -14,9 +30,9 @@ const SolarSystem = () => {
         restDelta: 0.001
     });
 
-    // Move the entire solar system from Top-Left to Bottom-Right based on scroll
-    const x = useTransform(smoothScroll, [0, 1], ["0%", "50%"]); // Moves to center horizontal
-    const y = useTransform(smoothScroll, [0, 1], ["0%", "50%"]); // Moves to center vertical
+    // Subtle natural movement - keep it more centered
+    const x = useTransform(smoothScroll, [0, 1], ["0%", "15%"]); // Subtle horizontal movement
+    const y = useTransform(smoothScroll, [0, 1], ["0%", "10%"]); // Subtle vertical movement
 
     // Stable configuration for a full-screen solar system
     // speedFactor determines how fast it rotates relative to scroll
@@ -30,15 +46,19 @@ const SolarSystem = () => {
         { size: 16, color: '#9370DB', orbitRadius: 1250, speedFactor: 0.4 }  // Neptune-ish (Slowest)
     ];
 
+
     return (
         <motion.div
             className="solar-system-container"
             ref={containerRef}
-            style={{ x, y }}
+            style={animationReady ? { x, y } : { x: 0, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={animationReady ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            transition={{ duration: 2, ease: 'easeOut' }}
         >
             {/* Ambient Stars Background */}
             <div className="stars-background">
-                {[...Array(50)].map((_, i) => (
+                {[...Array(150)].map((_, i) => (
                     <motion.div
                         key={`star-${i}`}
                         className="star"
@@ -81,10 +101,12 @@ const SolarSystem = () => {
 
             {/* Planetary Orbits */}
             {planets.map((planet, index) => {
+                // Random starting position for each planet (0-360 degrees)
+                const startingAngle = Math.random() * 360;
+
                 // Create a unique rotation transform for each planet based on scroll
-                // We map 0-1 scroll progress to 135-(135 + 360 * speed) degrees
-                // Starting at 135 degrees places planets at the bottom-right diagonal relative to the top-left sun
-                const rotation = useTransform(smoothScroll, [0, 1], [135, 135 + 360 * planet.speedFactor]);
+                // We map 0-1 scroll progress to starting angle - (starting angle + 360 * speed) degrees
+                const rotation = useTransform(smoothScroll, [0, 1], [startingAngle, startingAngle + 360 * planet.speedFactor]);
 
                 return (
                     <motion.div
@@ -94,13 +116,13 @@ const SolarSystem = () => {
                             width: planet.orbitRadius * 2,
                             height: planet.orbitRadius * 2,
                         }}
-                        // Entrance Animation: Expand out from center
+                        // Entrance Animation: Planets scale in during build-up
                         initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
-                        animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
+                        animate={animationReady ? { scale: 1, opacity: 1, x: "-50%", y: "-50%" } : { scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
                         transition={{
                             duration: 1.5,
                             ease: "easeOut",
-                            delay: index * 0.1 // Staggered delay for "accumulation" effect
+                            delay: animationReady ? 0.3 + (index * 0.2) : 0 // Staggered delay: 0.3s, then 0.2s per planet
                         }}
                     >
                         <motion.div
@@ -126,6 +148,7 @@ const SolarSystem = () => {
                     </motion.div>
                 );
             })}
+
         </motion.div>
     );
 };

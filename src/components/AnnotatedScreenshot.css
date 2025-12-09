@@ -1,0 +1,246 @@
+/* Annotated Screenshot Component */
+.annotated-screenshot {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Browser Frame */
+.browser-frame {
+    background: #1a1a2e;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.browser-header {
+    background: #252540;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.browser-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.browser-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.browser-dots .dot.red {
+    background: #ff5f56;
+}
+
+.browser-dots .dot.yellow {
+    background: #ffbd2e;
+}
+
+.browser-dots .dot.green {
+    background: #27ca40;
+}
+
+.browser-url {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 16px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.url-icon {
+    font-size: 0.75rem;
+}
+
+.url-text {
+    font-family: monospace;
+}
+
+/* Browser Content */
+.browser-content {
+    position: relative;
+    background: #000;
+}
+
+.screenshot-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 500px;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* Annotation Markers */
+.annotation-marker {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-yellow, #ffde59);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.annotation-marker:hover,
+.annotation-marker.active {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 20px rgba(255, 222, 89, 0.6);
+}
+
+.marker-number {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #001931;
+}
+
+.marker-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--primary-yellow, #ffde59);
+    z-index: -1;
+}
+
+/* Annotation Tooltip */
+.annotation-tooltip {
+    position: absolute;
+    background: rgba(0, 25, 49, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 16px;
+    border-radius: 12px;
+    max-width: 280px;
+    z-index: 20;
+    transform: translate(-50%, calc(-100% - 20px));
+    border: 1px solid rgba(255, 222, 89, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-header {
+    font-weight: 700;
+    color: var(--primary-yellow, #ffde59);
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.tooltip-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Feature List */
+.feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 1rem;
+    background: rgba(0, 25, 49, 0.4);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover,
+.feature-item.active {
+    background: rgba(0, 25, 49, 0.7);
+    border-color: rgba(255, 222, 89, 0.3);
+    transform: translateY(-2px);
+}
+
+.feature-number {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    background: var(--primary-yellow, #ffde59);
+    color: #001931;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.feature-content h4 {
+    color: var(--primary-yellow, #ffde59);
+    font-size: 0.95rem;
+    margin: 0 0 4px 0;
+}
+
+.feature-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .browser-frame {
+        border-radius: 8px;
+    }
+
+    .browser-header {
+        padding: 8px 12px;
+    }
+
+    .browser-dots .dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .browser-url {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+
+    .screenshot-image {
+        max-height: 350px;
+    }
+
+    .annotation-marker {
+        width: 26px;
+        height: 26px;
+    }
+
+    .marker-number {
+        font-size: 0.8rem;
+    }
+
+    .feature-list {
+        grid-template-columns: 1fr;
+    }
+
+    .annotation-tooltip {
+        max-width: 200px;
+        padding: 12px;
+    }
+}

@@ -33,15 +33,15 @@ export const GlobalProvider = ({ children }) => {
                 technologies: ["React", "Laravel", "PostGIS", "Turf.js"],
                 images: [
                     "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=800&q=80",
-                    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
-                    "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
-                    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80"
+                    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+                    "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80"
                 ],
                 imageDescriptions: [
-                    "Interactive map dashboard displaying tax parcels with real-time spatial analysis and filtering capabilities.",
-                    "Advanced property search interface with PostGIS-powered spatial queries and data visualization.",
-                    "Tax record management system showing detailed parcel information and historical data.",
-                    "Geospatial analytics dashboard with Turf.js integration for complex spatial operations."
+                    "Interactive map view with real-time visualization of tax parcels and layer controls.",
+                    "Analytics dashboard showing property tax data patterns and statistics.",
+                    "Search and filter panel with advanced PostGIS-powered queries.",
+                    "Data export tools for generating PDF reports and Excel files."
                 ]
             },
             {

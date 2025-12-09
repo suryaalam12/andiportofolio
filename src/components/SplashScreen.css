@@ -1,0 +1,154 @@
+/* Font import must be at the top */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+/* Animated Stars Background */
+.splash-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.splash-star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    will-change: opacity, scale;
+}
+
+/* Gradient Orbs */
+.splash-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.splash-orb-1 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 222, 89, 0.4) 0%, transparent 70%);
+    top: -100px;
+    left: -100px;
+}
+
+.splash-orb-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(65, 105, 225, 0.3) 0%, transparent 70%);
+    bottom: -150px;
+    right: -150px;
+}
+
+/* Content Container */
+.splash-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+    max-width: 600px;
+    padding: 40px;
+}
+
+/* Welcome Text - Nintendo/Retro Style */
+.splash-welcome {
+    font-size: clamp(3.5rem, 10vw, 5rem);
+    font-weight: 900;
+    margin: 0 0 30px 0;
+    color: #ffde59;
+    letter-spacing: 4px;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    text-transform: capitalize;
+}
+
+/* Blinking Cursor */
+.splash-welcome .cursor {
+    display: inline-block;
+    margin-left: 8px;
+    color: #ffde59;
+    font-weight: bold;
+    animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Orbit Together Text - Dramatic Animation */
+.splash-orbit-text {
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+    font-weight: 700;
+    margin: 40px 0 0 0;
+    color: #ffde59;
+    letter-spacing: 2px;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+}
+
+@keyframes orbitPulse {
+    0% {
+        transform: scale(1) translateY(0px);
+    }
+    50% {
+        transform: scale(1.08) translateY(-8px);
+    }
+    100% {
+        transform: scale(1) translateY(0px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .splash-content {
+        padding: 20px;
+    }
+
+    .splash-welcome {
+        font-size: clamp(2.2rem, 7vw, 3.5rem);
+        letter-spacing: 2px;
+    }
+
+    .splash-orbit-text {
+        font-size: clamp(0.9rem, 2.2vw, 1.4rem);
+        letter-spacing: 1px;
+    }
+
+    .splash-orb-1 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .splash-orb-2 {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .splash-welcome {
+        font-size: clamp(1.5rem, 5.5vw, 2.5rem);
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
+
+    .splash-orbit-text {
+        font-size: clamp(0.8rem, 2vw, 1rem);
+        margin-top: 20px;
+        letter-spacing: 0.5px;
+    }
+}

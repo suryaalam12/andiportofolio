@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { GlobalProvider } from './context/GlobalProvider';
+import SplashScreen from './components/SplashScreen';
 import Header from './components/Header';
 import About from './components/About';
 import Activities from './components/Activities';
@@ -9,6 +11,18 @@ import ScrollIndicator from './components/ScrollIndicator';
 import './App.css';
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+  const [headerReady, setHeaderReady] = useState(false);
+
+  // When splash completes, allow header AND solar system to animate
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+    // Delay animation start to sync with splash exit (splash takes 2 seconds to exit)
+    setTimeout(() => {
+      setHeaderReady(true);
+    }, 100);
+  };
+
   // Fix scroll restoration on refresh - AGGRESSIVE FIX
   React.useEffect(() => {
     document.documentElement.style.scrollSnapType = 'none';
@@ -38,11 +52,17 @@ function App() {
 
   return (
     <GlobalProvider>
+      <AnimatePresence>
+        {showSplash && (
+          <SplashScreen key="splash" onComplete={handleSplashComplete} />
+        )}
+      </AnimatePresence>
+
       <div className="app">
-        <ScrollIndicator />
-        <Header />
+        <ScrollIndicator isReady={headerReady} />
+        <Header isReady={headerReady} />
         <About />
-        <Projects />
+        <Projects isReady={headerReady} />
         <Activities />
         <Footer />
       </div>

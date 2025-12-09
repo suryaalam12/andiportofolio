@@ -3,7 +3,7 @@ import Lottie from 'lottie-react';
 import rocketAnimation from '../assets/rocket mate.json';
 import './ScrollIndicator.css';
 
-const ScrollIndicator = () => {
+const ScrollIndicator = ({ isReady = true }) => {
     const [scrollProgress, setScrollProgress] = useState(0);
     const [scrollDirection, setScrollDirection] = useState('down'); // 'up' or 'down'
     const rafRef = useRef(null);
@@ -71,7 +71,7 @@ const ScrollIndicator = () => {
     }, []);
 
     return (
-        <div className="scroll-indicator">
+        <div className="scroll-indicator" style={{ opacity: isReady ? 1 : 0, pointerEvents: isReady ? 'auto' : 'none', transition: 'opacity 0.5s ease' }}>
             <div className="scroll-track">
                 <div
                     className={`scroll-rocket ${scrollDirection === 'up' ? 'rocket-up' : 'rocket-down'}`}
