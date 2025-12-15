@@ -75,24 +75,12 @@ const Header = ({ isReady = true }) => {
             transition={{ duration: 1.2, delay: 1.6, ease: 'easeOut' }}
           >
             <a href="#about" className="nav-link">About</a>
-            <a href="#activities" className="nav-link">Activities</a>
             <a href="#projects" className="nav-link">Projects</a>
+            <a href="#activities" className="nav-link">Activities</a>
           </motion.nav>
 
           {/* CTA Buttons with animation */}
-          <motion.div
-            className="header-cta"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 1.2, delay: 1.9, ease: 'easeOut' }}
-          >
-            <a href="#projects" className="btn btn-primary">
-              View Projects
-            </a>
-            <a href={profile.contact.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
-              Contact Me
-            </a>
-          </motion.div>
+        
         </motion.div>
       </motion.div>
     </motion.header>

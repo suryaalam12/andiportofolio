@@ -70,11 +70,11 @@ const Activities = () => {
                     animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                     transition={{ delay: 0.1, duration: 0.6 }}
                 >
-                    Daily highlights from my work at Bapenda Jombang
+                    Project Implementation
                 </motion.p>
 
                 <motion.div
-                    className="activities-grid"
+                    className="activities-scroll-container"
                     variants={containerVariants}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
@@ -82,36 +82,23 @@ const Activities = () => {
                     {activities.map((activity) => (
                         <motion.div
                             key={activity.id}
-                            className="activity-card"
+                            className="activity-highlight"
                             onClick={() => openLightbox(activity)}
                             variants={itemVariants}
-                            whileHover={{
-                                scale: 1.05,
-                                y: -5
-                            }}
-                            transition={{ type: 'spring', stiffness: 300 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                         >
-                            <div className="activity-image-wrapper">
-                                <img
-                                    src={activity.image}
-                                    alt={activity.caption}
-                                    className="activity-image"
-                                    loading="lazy"
-                                />
-                                <div className="activity-overlay">
-                                    <div className="activity-info">
-                                        <p className="activity-caption">{activity.caption}</p>
-                                        <p className="activity-date">{activity.date}</p>
-                                    </div>
+                            <div className="highlight-frame-wrapper">
+                                <div className="highlight-frame">
+                                    <img
+                                        src={activity.image}
+                                        alt={activity.caption}
+                                        className="highlight-image"
+                                        loading="lazy"
+                                    />
                                 </div>
                             </div>
-                            <div className="activity-tags">
-                                {activity.tags.map((tag, index) => (
-                                    <span key={index} className="activity-tag">
-                                        #{tag}
-                                    </span>
-                                ))}
-                            </div>
+                            <p className="highlight-caption">{activity.caption}</p>
                         </motion.div>
                     ))}
                 </motion.div>

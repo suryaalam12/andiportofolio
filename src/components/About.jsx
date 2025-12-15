@@ -30,7 +30,7 @@ const About = () => {
   };
 
   return (
-    <section className="about" ref={ref}>
+    <section className="about" id="about" ref={ref}>
       <div className="container">
         <motion.h2
           className="section-title"
@@ -54,25 +54,35 @@ const About = () => {
           <motion.div className="skills-section" variants={itemVariants}>
             <h3 className="skills-title">Technical Skills</h3>
             <motion.div
-              className="skills-grid"
+              className="skills-categories"
               variants={containerVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
             >
-              {profile.skills.map((skill, index) => (
-                <motion.span
+              {profile.skills.map((skillGroup, index) => (
+                <motion.div
                   key={index}
-                  className="skill-tag"
+                  className="skill-category"
                   variants={itemVariants}
-                  whileHover={{
-                    scale: 1.1,
-                    backgroundColor: '#ffde59',
-                    color: '#004aad'
-                  }}
-                  transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  {skill}
-                </motion.span>
+                  <h4 className="skill-category-title">{skillGroup.category}</h4>
+                  <div className="skills-grid">
+                    {skillGroup.items.map((skill, skillIndex) => (
+                      <motion.span
+                        key={skillIndex}
+                        className="skill-tag"
+                        whileHover={{
+                          scale: 1.1,
+                          backgroundColor: '#ffde59',
+                          color: '#004aad'
+                        }}
+                        transition={{ type: 'spring', stiffness: 300 }}
+                      >
+                        {skill}
+                      </motion.span>
+                    ))}
+                  </div>
+                </motion.div>
               ))}
             </motion.div>
           </motion.div>

@@ -5,148 +5,37 @@ import SolarSystem from "./SolarSystem";
 import "./Projects.css";
 
 const MobileProject = ({ project }) => {
-    const [activeImageIndex, setActiveImageIndex] = useState(0); // Start at first image
-    const [isInViewport, setIsInViewport] = useState(false);
+    const [activeImageIndex, setActiveImageIndex] = useState(0);
     const carouselRef = useRef(null);
     const cardRef = useRef(null);
     const itemRefs = useRef([]);
-    const firstLoad = useRef(true);
-    const scrollTimeout = useRef(null);
     const isCardInView = useInView(cardRef, { once: true, amount: 0.3 });
 
     const handleScroll = () => {
-        // Debounce scroll events
-        if (scrollTimeout.current) {
-            clearTimeout(scrollTimeout.current);
-        }
-
-        scrollTimeout.current = setTimeout(() => {
-            // Prevent the first automatic scroll event from resetting to index 0
-            if (firstLoad.current) {
-                firstLoad.current = false;
-                return;
-            }
-
-            if (carouselRef.current) {
-                const container = carouselRef.current;
-                const containerCenter = container.scrollLeft + container.clientWidth / 2;
-
-                let closestIndex = 0;
-                let minDistance = Infinity;
-
-                itemRefs.current.forEach((item, index) => {
-                    if (item) {
-                        const itemCenter = item.offsetLeft + item.offsetWidth / 2;
-                        const distance = Math.abs(containerCenter - itemCenter);
-
-                        if (distance < minDistance) {
-                            minDistance = distance;
-                            closestIndex = index;
-                        }
-                    }
-                });
-
-                if (closestIndex !== activeImageIndex) {
-                    setActiveImageIndex(closestIndex);
-                }
-            }
-        }, 30); // Reduced to 30ms for faster response
-    };
-
-    // Set initial active image & scroll to index 0
-    useEffect(() => {
-        const startIndex = 0; // Changed to 0 - start at first image
-
-        if (itemRefs.current[startIndex]) {
-            itemRefs.current[startIndex].classList.add("active");
-
-            // Instant scroll into position
-            itemRefs.current[startIndex].scrollIntoView({
-                behavior: "auto",
-                block: "nearest",
-                inline: "center",
-            });
-        }
-
-        setActiveImageIndex(startIndex);
-    }, []);
-
-    // Handle active class on index change
-    useEffect(() => {
-        itemRefs.current.forEach((item, i) => {
-            if (item) {
-                if (i === activeImageIndex) {
-                    item.classList.add("active");
-                } else {
-                    item.classList.remove("active");
-                }
-            }
-        });
-    }, [activeImageIndex]);
-
-    // Track viewport visibility
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => setIsInViewport(entry.isIntersecting),
-            { threshold: 0.1 }
-        );
-
         if (carouselRef.current) {
-            observer.observe(carouselRef.current);
+            const container = carouselRef.current;
+            const containerCenter = container.scrollLeft + container.clientWidth / 2;
+
+            let closestIndex = 0;
+            let minDistance = Infinity;
+
+            itemRefs.current.forEach((item, index) => {
+                if (item) {
+                    const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+                    const distance = Math.abs(containerCenter - itemCenter);
+
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestIndex = index;
+                    }
+                }
+            });
+
+            if (closestIndex !== activeImageIndex) {
+                setActiveImageIndex(closestIndex);
+            }
         }
-
-        return () => observer.disconnect();
-    }, []);
-
-    // Handle container resize - recalculate scroll position
-    useEffect(() => {
-        if (!carouselRef.current) return;
-
-        const resizeObserver = new ResizeObserver(() => {
-            // Recenter active item when container resizes
-            if (itemRefs.current[activeImageIndex]) {
-                itemRefs.current[activeImageIndex].scrollIntoView({
-                    behavior: 'auto',
-                    block: 'nearest',
-                    inline: 'center',
-                });
-            }
-        });
-
-        resizeObserver.observe(carouselRef.current);
-
-        return () => resizeObserver.disconnect();
-    }, [activeImageIndex]);
-
-    // Keyboard navigation
-    useEffect(() => {
-        if (!isInViewport) return;
-
-        const handleKeyDown = (e) => {
-            if (e.key === "ArrowLeft") {
-                e.preventDefault();
-                const prevIndex = Math.max(0, activeImageIndex - 1);
-                setActiveImageIndex(prevIndex);
-                itemRefs.current[prevIndex]?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "center",
-                });
-            } else if (e.key === "ArrowRight") {
-                e.preventDefault();
-                const nextIndex = Math.min(project.images.length - 1, activeImageIndex + 1);
-                setActiveImageIndex(nextIndex);
-                itemRefs.current[nextIndex]?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "center",
-                });
-            }
-        };
-
-        window.addEventListener("keydown", handleKeyDown);
-        return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [isInViewport, activeImageIndex, project.images.length]);
+    };
 
     return (
         <motion.article
@@ -185,7 +74,11 @@ const MobileProject = ({ project }) => {
                 animate={isCardInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
             >
-                <div className="mobile-carousel" ref={carouselRef} onScroll={handleScroll}>
+                <div
+                    className="mobile-carousel"
+                    ref={carouselRef}
+                    onScroll={handleScroll}
+                >
                     {project.images.map((image, index) => (
                         <div
                             key={index}
@@ -309,7 +202,11 @@ const WebmapProject = ({ project }) => {
                 animate={isCardInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
             >
-                <div className="webmap-carousel" ref={carouselRef} onScroll={handleScroll}>
+                <div
+                    className="webmap-carousel"
+                    ref={carouselRef}
+                    onScroll={handleScroll}
+                >
                     {project.images.map((image, index) => (
                         <div
                             key={index}
@@ -368,18 +265,6 @@ const WebmapProject = ({ project }) => {
                         ))}
                     </div>
                 )}
-            </motion.div>
-
-            {/* Request Demo Button */}
-            <motion.div
-                className="project-actions"
-                initial={{ opacity: 0 }}
-                animate={isCardInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-            >
-                <a href="#contact" className="demo-button">
-                    Request Demo
-                </a>
             </motion.div>
         </motion.article>
     );

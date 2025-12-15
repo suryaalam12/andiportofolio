@@ -55,6 +55,7 @@
     width: 800px;
     height: 900px;
     z-index: 10;
+    pointer-events: none;
 }
 
 .profile-name {
@@ -99,6 +100,8 @@
     justify-content: center;
     margin: 2rem 0;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 20;
 }
 
 .nav-link {
@@ -112,6 +115,8 @@
     transition: all 0.3s ease;
     text-transform: uppercase;
     position: relative;
+    z-index: 20;
+    cursor: pointer;
 }
 
 .nav-link:hover {
