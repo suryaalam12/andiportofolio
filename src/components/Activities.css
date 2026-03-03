@@ -17,7 +17,7 @@
 .activities-scroll-container {
     display: flex;
     overflow-x: auto;
-    gap: var(--space-xl);
+    gap: var(--space-2xl);
     padding: var(--space-md) var(--space-lg);
     margin-top: var(--space-xl);
     scrollbar-width: none;
@@ -39,19 +39,15 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    width: 140px;
-    /* Increased width for frame */
+    width: 210px;
     flex-shrink: 0;
 }
 
 .highlight-frame-wrapper {
-    width: 120px;
-    height: 210px;
-    /* Portrait ratio */
-    border-radius: 12px;
-    /* Rounded rectangle */
-    padding: 3px;
-    /* Space for border */
+    width: 180px;
+    height: 315px;
+    border-radius: 18px;
+    padding: 4px;
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     display: flex;
     align-items: center;
@@ -67,10 +63,8 @@
 .highlight-frame {
     width: 100%;
     height: 100%;
-    border-radius: 9px;
-    /* Slightly less than wrapper */
+    border-radius: 14px;
     border: 3px solid #000;
-    /* Match background color to create gap */
     overflow: hidden;
     background: #000;
 }
@@ -83,14 +77,14 @@
 
 .highlight-caption {
     font-family: 'Roboto Mono', monospace;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: #fff;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 100%;
-    margin-top: 4px;
+    margin-top: 8px;
 }
 
 /* Lightbox Modal */
@@ -158,7 +152,7 @@
 .lightbox-image-wrapper {
     width: auto;
     max-width: 100%;
-    max-height: 60vh;
+    max-height: 70vh;
     /* Limit image height to leave room for text */
     display: flex;
     align-items: center;
@@ -176,7 +170,7 @@
     width: auto;
     max-width: 100%;
     height: auto;
-    max-height: 60vh;
+    max-height: 70vh;
     object-fit: contain;
 }
 
@@ -294,6 +288,23 @@
     .lightbox-image-wrapper {
         max-height: 80vh;
     }
+
+    .activities-scroll-container {
+        gap: var(--space-lg);
+    }
+
+    .activity-highlight {
+        width: 180px;
+    }
+
+    .highlight-frame-wrapper {
+        width: 150px;
+        height: 262px;
+    }
+
+    .highlight-caption {
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -303,5 +314,14 @@
 
     .lightbox-overlay {
         padding: var(--space-sm);
+    }
+
+    .activity-highlight {
+        width: 150px;
+    }
+
+    .highlight-frame-wrapper {
+        width: 126px;
+        height: 220px;
     }
 }

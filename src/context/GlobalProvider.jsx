@@ -24,6 +24,7 @@ import a3Pov from "../assets/a3_pov.png";
 import a3Catalog from "../assets/a3_cataloglist.png";
 
 import actEspos from "../assets/act_espos.png";
+import actLahan from "../assets/act_lahan.png";
 import actPdl from "../assets/act_pdl.png";
 import actStuba from "../assets/act_stuba.png";
 import actZonasi from "../assets/act_zonasi.png";
@@ -38,15 +39,15 @@ export const GlobalProvider = ({ children }) => {
     const [state, setState] = useState({
         profile: {
             name: "Andi Surya Alam",
-            title: "GIS Developer | Tenaga Ahli Sistem Informasi Geografis – Bapenda Jombang",
+            title: "Full-stack GIS Developer | Tenaga Ahli Sistem Informasi Geografis – Bapenda Jombang",
             location: "Kediri, East Java, ID",
-            summary: "I'm a GIS Developer with over 3 years of professional experience builds powerful web-based mapping solutions. I specialize in transforming big geospatial data into fast, interactive map applicationsp. My expertise includes handling large-scale datasets, performing complex server-side spatial queries, and architecting modern web GIS applications using the modern JavaScript frameworks and backend technologies. I create mapping solutions that are not just functional, but scalable, performant, and built to last.",
+            summary: "I'm a Full-stack GIS Developer with over 3 years of professional experience builds powerful web-based mapping solutions. I specialize in transforming big geospatial data into fast, interactive map applicationsp. My expertise includes handling large-scale datasets, performing complex server-side spatial queries, and architecting modern web GIS applications using the modern JavaScript frameworks and backend technologies. I create mapping solutions that are not just functional, but scalable, performant, and built to last.",
             skills: [
                 { category: "Frontend Development", items: ["React", "React Native", "Ionic JS"] },
                 { category: "Backend Development", items: ["Node.js", "Laravel"] },
                 { category: "Geospatial Database", items: ["PostGIS", "PostgreSQL"] },
                 { category: "GIS Tools", items: ["ArcGIS", "QGIS"] },
-                { category: "DevOps & Infrastructure", items: ["Docker", "Redis", "Git"] }
+                { category: "DevOps", items: ["Docker", "Redis", "Git"] }
             ],
             avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
             contact: {
@@ -77,6 +78,29 @@ export const GlobalProvider = ({ children }) => {
                     "After the spatial and attribute data are updated, the dataset is assessed using the land-value zoning model to determine appropriate annual tax policies. By leveraging PostGIS and NoSQL technologies in spatial queries, the system can efficiently handle large-scale inserts and updates, ensuring that PBB (land and building tax) values in Jombang Regency remain accurate and up-to-date.",
                     "The system integrates core PBB tax data from the Oracle-based DBMS with spatial data in PostGIS to produce thematic maps. By merging Oracle queries with PostGIS operations, the application ensures that tax data and spatial information are correctly aligned and fully integrated, enabling accurate visualization and analysis of PBB-related information.",
                     "To support users in verifying tax objects, the application is also integrated with Google Street View, allowing them to observe real-world conditions on the ground. This feature enhances the accuracy and reliability of tax assessments by providing visual context alongside spatial and attribute data."
+                ]
+            },
+            {
+                id: 4,
+                title: "Lahan App",
+                category: "mobile",
+                storeUrl: "https://play.google.com/store/apps/details?id=com.makelar.app",
+                description:
+                    "A comprehensive real estate mobile application for property listings, spatial analysis, and agent management. This project is currently in progress and features interactive property catalogs, point-of-view (POV) imagery for property visualization, and advanced spatial analysis tools to help agents and buyers make informed decisions.",
+                technologies: ["Ionic", "Firebase", "Gemini", "Node.js", "React"],
+                images: [
+                    a3Login,
+                    a3Property,
+                    a3Pov,
+                    a3Analysis,
+                    a3Catalog,
+                ],
+                imageDescriptions: [
+                    "A comprehensive real estate mobile application for property listings, spatial analysis, and agent management. This project is currently in progress and features interactive property catalogs, point-of-view (POV) imagery for property visualization, and advanced spatial analysis tools to help agents and buyers make informed decisions.",
+                    "Detailed property view displaying comprehensive information including images, specifications, pricing, and location data with interactive maps.",
+                    "Point-of-view (POV) feature providing immersive property visualization, allowing users to explore properties through panoramic imagery and virtual tours.",
+                    "Advanced spatial analysis powered by Gemini AI, leveraging Points of Interest (POI) data, heat maps for population density and activity patterns, and real-time traffic data to provide intelligent property recommendations and market insights for data-driven decision making.",
+                    "Comprehensive property catalog with advanced search and filtering capabilities, enabling users to browse listings by location, price range, property type, and custom criteria."
                 ]
             },
             {
@@ -118,29 +142,6 @@ export const GlobalProvider = ({ children }) => {
                     "Utilizes an external PBB API to display parcel labels for each land plot, helping field surveyors quickly identify and locate PKB owner address data.",
                     "To monitor field surveyors’ work progress, I developed an admin dashboard that displays task statuses and daily activity summaries. This enables better coordination and real-time operational strategy adjustments."
                 ]
-            }
-            ,
-            {
-                id: 4,
-                title: "Makelar App",
-                category: "mobile",
-                description:
-                    "A comprehensive real estate mobile application for property listings, spatial analysis, and agent management. This project is currently in progress and features interactive property catalogs, point-of-view (POV) imagery for property visualization, and advanced spatial analysis tools to help agents and buyers make informed decisions.",
-                technologies: ["Ionic", "Firebase", "Gemini", "Node.js", "React"],
-                images: [
-                    a3Login,
-                    a3Property,
-                    a3Pov,
-                    a3Analysis,
-                    a3Catalog,
-                ],
-                imageDescriptions: [
-                    "A comprehensive real estate mobile application for property listings, spatial analysis, and agent management. This project is currently in progress and features interactive property catalogs, point-of-view (POV) imagery for property visualization, and advanced spatial analysis tools to help agents and buyers make informed decisions.",
-                    "Detailed property view displaying comprehensive information including images, specifications, pricing, and location data with interactive maps.",
-                    "Point-of-view (POV) feature providing immersive property visualization, allowing users to explore properties through panoramic imagery and virtual tours.",
-                    "Advanced spatial analysis powered by Gemini AI, leveraging Points of Interest (POI) data, heat maps for population density and activity patterns, and real-time traffic data to provide intelligent property recommendations and market insights for data-driven decision making.",
-                    "Comprehensive property catalog with advanced search and filtering capabilities, enabling users to browse listings by location, price range, property type, and custom criteria."
-                ]
             },
         ],
         activities: [
@@ -175,6 +176,13 @@ export const GlobalProvider = ({ children }) => {
                 date: "August 15, 2025",
                 tags: ["presentation", "reporting"],
                 instagramUrl: "https://www.instagram.com/reel/DI0n8mkBv60/?igsh=MThqamZtenp0eXM2aA=="
+            },
+            {
+                id: 5,
+                image: actLahan,
+                caption: "Lahan App: Property discovery and location analysis",
+                date: "March 3, 2026",
+                tags: ["mobile", "property", "analysis"]
             }
         ]
     });

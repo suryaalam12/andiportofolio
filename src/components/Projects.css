@@ -31,9 +31,8 @@
     flex-direction: column;
     justify-content: center;
     background: rgba(0, 25, 49, 0.3);
-    /* Semi-transparent dark blue */
+    box-shadow: 2px 2px 2px 2px var(--primary-yellow);;
     backdrop-filter: blur(8px);
-    border-bottom: 4px solid var(--primary-yellow);
     position: relative;
     z-index: 2;
     border-radius: 16px;
@@ -55,7 +54,7 @@
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
-    border: 2px solid rgba(255, 222, 89, 0.3);
+box-shadow: 1px 1px 1px 1px var(--primary-yellow);;
     transition: all 0.3s ease;
 }
 

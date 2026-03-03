@@ -1,8 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useGlobalContext } from "../context/GlobalProvider";
 import SolarSystem from "./SolarSystem";
 import "./Projects.css";
+
+const openExternalInNewTab = (event, url) => {
+    event.preventDefault();
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) {
+        newWindow.opener = null;
+    }
+};
 
 const MobileProject = ({ project }) => {
     const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -66,6 +74,20 @@ const MobileProject = ({ project }) => {
                         {project.imageDescriptions?.[activeImageIndex] || project.description}
                     </p>
                 </div>
+
+                {project.storeUrl && (
+                    <div className="project-actions">
+                        <a
+                            className="demo-button"
+                            href={project.storeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(event) => openExternalInNewTab(event, project.storeUrl)}
+                        >
+                            View on Google Play
+                        </a>
+                    </div>
+                )}
             </motion.div>
 
             <motion.div
@@ -194,6 +216,20 @@ const WebmapProject = ({ project }) => {
                         {project.imageDescriptions?.[activeImageIndex] || project.description}
                     </p>
                 </div>
+
+                {project.storeUrl && (
+                    <div className="project-actions">
+                        <a
+                            className="demo-button"
+                            href={project.storeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(event) => openExternalInNewTab(event, project.storeUrl)}
+                        >
+                            View on Google Play
+                        </a>
+                    </div>
+                )}
             </motion.div>
 
             <motion.div
